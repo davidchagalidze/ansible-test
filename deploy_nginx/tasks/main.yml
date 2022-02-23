@@ -1,0 +1,13 @@
+---
+# tasks file for deploy_nginx_conf
+
+  - name: Installing NGINX
+    apt: name=nginx state=latest
+
+  - name: Start and enable NGINX
+    service: name=nginx state=started enabled=yes
+
+  - name: Generating and deploying confs
+    template: src=vhost.j2 dest=/etc/nginx/sites-available/{{ item.name }}
+    with_items: "{{ vhosts }}"
+    notify: Restart NGINX

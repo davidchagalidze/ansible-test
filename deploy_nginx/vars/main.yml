@@ -1,0 +1,9 @@
+---
+# vars file for deploy_nginx_conf
+
+
+vhosts:
+   - name: test1
+     server_name: test1.juneway.pro
+   - name: test2
+     server_name: test2.juneway.pro
